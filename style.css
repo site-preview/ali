@@ -1279,6 +1279,10 @@ body.loaded .follow-btn {
   background-image: url(../img/kv7.jpg);
 }
 
+.firstpage-background-img{
+  background-image: url(../img/top_06.jpg);
+}
+
 /* 暗めオーバーレイ */
 .rental-title::before{
   content: "";
