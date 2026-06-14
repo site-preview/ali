@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/slick.css">
 <link rel="stylesheet" href="css/slick-theme.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -17,13 +17,13 @@
 <body>
 	
 <header>
-  <a href="index.html"><img src="img/logo.jpg" alt="サイトロゴ" class="logo"></a>
+  <a href="index.html"><img src="img/logo.png" alt="サイトロゴ" class="logo"></a>
 
 	
 <nav class="header-nav">
 
   <!-- ハンバーガーアイコン（SPのみ表示） -->
-  <div class="hamburger">
+<div class="hamburger" id="hamburger">
     <span></span>
     <span></span>
     <span></span>
@@ -31,11 +31,12 @@
 
   <!-- ナビ本体 -->
   <ul class="nav-list">
-    <li><a href="membership.html">入会案内</a></li>
+    <li><a href="class.html">クラス案内</a></li>
     <li><a href="lesson.html">レッスンスケジュール</a></li>
-    <li><a href="class.html">教室案内</a></li>
-    <li><a href="news.html">連絡ページ</a></li>
+    <li><a href="membership.html">入会案内</a></li>
     <li><a href="gallery.html">フォトギャラリー</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="news.html">ニュース</a></li>
     <li><a href="studio.html">レンタルスタジオ</a></li>
     <li><a href="contact.html">お問い合わせ</a></li>
 
@@ -67,10 +68,22 @@
       <p class="rental-lead">
         当スタジオでは、年齢やレベルに合わせた<br>
         さまざまなクラスをご用意しております。<br>
-        ご自身にぴったりのクラスをぜひ見つけてください。
+        ご自身にぴったりのクラスをぜひ見つけてください。</p>
+
+  <div class="kv-scroll">
+    <span>SCROLL</span>
+  </div>
     </div>
+
+      <div class="tab-container">
+  <button class="tab-btn active" data-genre="all">すべてを見る</button>
+  <button class="tab-btn" data-genre="ジャズ">ジャズ</button>
+  <button class="tab-btn" data-genre="バレエ">バレエ</button>
+</div>
 	
 <section class="class-detail-card">
+
+
 
   <div class="detail-content">
     <h2 class="detail-title">
@@ -274,6 +287,59 @@
   </div>
 </section>
 
+<script src="js/script.js"></script>
+  <script src="js/ali.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // --- ハンバーガーメニューの処理 ---
+      var hamburger = document.getElementById('hamburger');
+      var navList = document.querySelector('.nav-list');
+
+      if (hamburger && navList) {
+        hamburger.addEventListener('click', function() {
+          navList.classList.toggle('active');
+        });
+
+        var navLinks = document.querySelectorAll('.nav-list a');
+        navLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+            navList.classList.remove('active');
+          });
+        });
+      }
+
+      // --- ▼ ジャンル切り替えタブの処理（追加） ---
+      var tabButtons = document.querySelectorAll('.tab-btn');
+      // クラスカード（class-detail-card-pink と class-detail-card-blue 両方を取得）
+      var classCards = document.querySelectorAll('[class^="class-detail-card"]');
+
+      tabButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          // 1. アクティブなボタンの見た目を切り替え
+          tabButtons.forEach(function(btn) { btn.classList.remove('active'); });
+          button.classList.add('active');
+
+          // 2. 選択されたジャンルを取得
+          var selectedGenre = button.getAttribute('data-genre');
+
+          // 3. カードの表示・非表示を切り替え
+          classCards.forEach(function(card) {
+            // カード内にあるタグの文字（ジャズ / バレエ）を取得
+            var tagElement = card.querySelector('.tag-classpage');
+            var cardGenre = tagElement ? tagElement.textContent.trim() : '';
+
+            if (selectedGenre === 'all' || cardGenre === selectedGenre) {
+              card.style.display = 'flex'; // 条件に合う、または「すべて」なら表示
+            } else {
+              card.style.display = 'none'; // 合わないものは非表示
+            }
+          });
+        });
+      });
+    });
+  </script>
+
 <footer class="footer">
 
   <div class="footer-info">
@@ -290,8 +356,6 @@
   </div>
 
   <p class="footer-links">
-    <a href="https://www.makeenlit.com/">運営会社</a>
-    <span class="divider">｜</span>
     <a href="policy.html">プライバシーポリシー</a>
   </p>
 

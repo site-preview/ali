@@ -43,7 +43,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 99999; /* ←最前面に表示されるよう、大きな数値に変更 */
 
   opacity: 1;
   transition: opacity 1.2s ease;
@@ -55,7 +55,7 @@ a {
 }
 
 .loading-logo-img {
-  width: min(70vw, 360px);
+  width: min(50vw, 240px); 
   opacity: 0;
   animation: logoFadeIn 1.2s ease forwards;
   z-index: 2;
@@ -233,171 +233,7 @@ body.loaded .follow-btn {
 
 
 /*キービジュアルスライダー（ali）*/
-/* ==========================================================================
-   新・キービジュアルスライダー（親しみやすい＆SP横長レスポンシブ対応）
-   ========================================================================== */
-.kv-slider-wrap {
-  position: relative;
-  width: 100%;
-  height: 550px;               /* PC版：高さを固定して安定した横長に */
-  overflow: hidden;
-  background: #FEF2F6;         /* スタジオらしい温かみのある薄ピンクの裏地 */
-}
 
-.main-slider,
-.slide-item {
-  height: 100%;
-}
-
-.slide-item {
-  position: relative;
-  width: 100%;
-}
-
-/* スライド画像の設定 */
-.slide-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;           
-  object-position: center;     
-  display: block;
-}
-
-/* 画像の上のフィルター：親しみやすさを出すため、黒ではなくスタジオカラーのピンクを薄くブレンド */
-.slide-item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(244, 185, 207, 0.2), rgba(0, 0, 0, 0.35));
-  z-index: 1;
-}
-
-/* テキストエリア：画像の中央全体に配置し、上下左右中央揃えに */
-.kv-text {
-  position: absolute;
-  inset: 0;                    /* 全体に広げる */
-  z-index: 10;                 
-  display: flex;
-  flex-direction: column;      /* 複数行を縦に並べる */
-  justify-content: center;     /* 上下中央揃え */
-  align-items: center;         /* 左右中央揃え */
-  text-align: center;
-  color: #fff;
-  padding: 20px;
-  pointer-events: none;        
-}
-
-/* ==========================================================================
-   KVテキスト・ふんわり浮かび上がるアニメーション調整
-   ========================================================================== */
-
-/* キャッチコピー（踊る楽しさを伝えたい） */
-.kv-catchphrase {
-  font-family: "Zen Maru Gothic", "Poppins", sans-serif;
-  font-size: clamp(28px, 5.5vw, 56px); /* タイトルより少し大きく、印象的に */
-  font-weight: 800;
-  line-height: 1.4;
-  letter-spacing: 0.15em;
-  color: #fff;
-  text-shadow: 2px 2px 15px rgba(134, 33, 37, 0.7); /* エンジ色の影で視認性UP */
-  margin-bottom: 15px;
-  
-  /* 初期状態は透明＋少し下に配置 */
-  opacity: 0;
-  transform: translateY(30px);
-  /* 1.4秒かけて、ふわっと動かす（0.3秒遅らせて発火） */
-  animation: kvFadeUpBlur 1.4s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
-}
-
-/* スタジオ名（ALI dance space） */
-.kv-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(16px, 2.5vw, 24px);
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: #fff;
-  text-shadow: 1px 1px 8px rgba(134, 33, 37, 0.6);
-  
-  /* キャッチコピーよりさらに少し遅れて浮かび上がらせる */
-  opacity: 0;
-  transform: translateY(20px);
-  animation: kvFadeUpBlur 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.8s forwards;
-}
-
-/* 
-   新設：ふんわり浮かび上がるアニメーション
-   （ぼかしエフェクト「blur」を抜けることで、より『ふわっと感』を演出）
-*/
-@keyframes kvFadeUpBlur {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-    filter: blur(10px); /* 最初は少しぼかす */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0); /* くっきり */
-  }
-}
-
-/* ==========================================================================
-   SP版（横幅768px以下）の微調整
-   ========================================================================== */
-@media (max-width: 768px) {
-  .kv-slider-wrap {
-    height: 280px !important;
-  }
-  
-  .kv-catchphrase {
-    font-size: 22px; /* スマホでも1行に収まりやすいサイズ */
-    letter-spacing: 0.08em;
-    text-shadow: 1px 1px 8px rgba(134, 33, 37, 0.8);
-    margin-bottom: 8px;
-  }
-
-  .kv-title {
-    font-size: 13px;
-    letter-spacing: 0.15em;
-  }
-}
-
-/* Slickのナビゲーションドット */
-.slick-dots {
-  bottom: 25px !important;     
-}
-.slick-dots li button:before {
-  color: #fff !important;      
-  font-size: 12px !important;
-  opacity: 0.6;
-}
-.slick-dots li.slick-active button:before {
-  color: #862125 !important;   /* アクティブなドットはロゴのエンジ色にしてアクセントに */
-  opacity: 1;
-}
-
-/* ==========================================================================
-   SP版（横幅768px以下）の横長KVへの強制調整
-   ========================================================================== */
-@media (max-width: 768px) {
-  .kv-slider-wrap {
-    height: 280px !important;  /* ★スマホで完全に「横長（16:9に近い黄金比）」に固定 */
-    min-height: auto;
-  }
-  
-  .kv-title {
-    font-size: 20px;           /* スマホ画面でも絶対に改行が崩れないサイズ */
-    line-height: 1.4;
-    letter-spacing: 0.05em;
-    text-shadow: 1px 1px 6px rgba(134, 33, 37, 0.7);
-  }
-
-  .kv-subtitle {
-    font-size: 11px;
-    padding: 4px 12px;
-    margin-bottom: 6px;
-  }
-}
 /*キービジュアルスライダーここまで（ali）*/
 
 .block {
@@ -841,7 +677,7 @@ body.loaded .follow-btn {
 
 .section-bg-title {
   position: absolute;
-  top: 10px;
+  top: -80px; /* 【変更】 10px から -20px（または -30px など）に引き上げてカードの上へ逃がす */
   left: 10px;
   font-size: 80px;
   font-weight: 700;
@@ -851,12 +687,9 @@ body.loaded .follow-btn {
   z-index: 1;
 }
 
+/* 【変更】日本語タイトル「お知らせ」を非表示に */
 .section-title {
-  position: relative;
-  font-size: 24px;
-  font-weight: 600;
-  z-index: 2;
-  margin-bottom: 30px;
+  display: none; 
 }
 
 /*タイトルここまで（ali）*/
@@ -1111,6 +944,7 @@ body.loaded .follow-btn {
 .detail-title{
   font-size: 42px;
   color: #ff4d87;
+  font-family: "Zen Maru Gothic", sans-serif;
 }
 
 .detail-title-blue{
@@ -2595,10 +2429,6 @@ body.loaded .follow-btn {
 
 /* クラス紹介ここから */
 
-/* =========================
-   CLASS SECTION
-========================= */
-
 .class-section{
   padding: 120px 0;
 }
@@ -2716,6 +2546,7 @@ body.loaded .follow-btn {
 
 /* スマホ */
 
+/* スマホ（SP版） */
 @media(max-width:768px){
 
   .class-section{
@@ -2729,42 +2560,53 @@ body.loaded .follow-btn {
   .class-ja{
     font-size: 18px;
   }
-
-  .class-card{
+.class-card {
     border-radius: 35px;
-
-    padding: 50px 0;
+    padding: 50px 0 40px 0;
+    display: flex !important;            /* ★ !important を追加 */
+    flex-direction: column !important;   /* ★ !important を追加 */
   }
 
-  .class-content{
+  /* ① 上部に配置するテキストエリア（タイトルと説明） */
+.class-content {
     padding: 0 25px;
+    order: 1 !important;                 /* ★ !important を追加 */
+    text-align: center;
   }
 
   .class-name{
     font-size: 36px;
-
     margin-bottom: 20px;
   }
 
   .class-text{
     font-size: 16px;
-
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* 下部スライダーとの隙間 */
   }
 
-  .class-slider{
+  /* ② 下部に配置する写真スライダーエリア */
+.class-slider {
+    order: 2 !important;                 /* ★ !important を追加 */
     padding-left: 25px;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .slider-track{
     gap: 16px;
-
     padding-right: 25px;
+    display: flex;        /* 写真を横並びに */
   }
 
+  /* スライドさせる写真1枚ずつのサイズ（画面幅に対して42%のサイズで複数枚並ぶ状態を維持） */
   .slider-track img{
     width: 42vw;
+    min-width: 42vw;      /* スマホ幅で縮まないように固定 */
     max-width: 500px;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
   }
 
 }
@@ -4865,7 +4707,6 @@ body {
 
 /* リスト全体の囲み（白背景のボックスにして上品に浮き立たせる） */
 .news-list {
-  background: #ffffff;
   border-radius: 20px;
   padding: 10px 30px;
   box-shadow: 0 10px 30px rgba(134, 33, 37, 0.02); /* 極薄の影 */
@@ -5261,21 +5102,6 @@ body {
   position: relative;           /* 背景文字を置くための基準 */
 }
 
-/* 背景にうっすら浮かぶおしゃれな英語 */
-.container-melty::before {
-  content: "Ali Dance Space";
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Fredoka', cursive; /* 既存の可愛いフォント */
-  font-size: clamp(40px, 8vw, 80px);
-  color: rgba(244, 185, 207, 0.25); /* 視覚を邪魔しない極薄のピンク */
-  font-weight: 700;
-  white-space: nowrap;
-  z-index: -1;
-}
-
 /* リード文のテキスト本体（ほんのりきれいな明朝体ブレンド） */
 .container-melty .readtext-2 {
   font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif; /* 綺麗な明朝体で大人っぽく */
@@ -5285,7 +5111,6 @@ body {
   letter-spacing: 0.2em;
   display: inline-block;
   text-align: left;             /* 文章は左揃えにして読みやすく */
-  border-top: 1px solid #E0C3CE;   /* 上下に細い優雅なラインをあしらう */
   border-bottom: 1px solid #E0C3CE;
   padding: 30px 10px;
 }
@@ -5295,5 +5120,823 @@ body {
     font-size: 14px;
     line-height: 2.1;
     text-align: center;         /* スマホは中央揃え */
+  }
+}
+
+/* ==========================================
+   レッスンスケジュール 縦線スクロール誘導
+   ========================================== */
+.kv-scroll {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;      /* リード文との隙間 */
+  text-align: center;
+  /* タイトル全体のフェードインに合わせるための遅延 */
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.6s; 
+}
+
+/* SCROLLのテキスト部分 */
+.kv-scroll span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85); /* ほんのり透けた上品な白 */
+  letter-spacing: 0.3em;             /* 文字の間隔を広げてお洒落に */
+  display: block;
+  margin-bottom: 12px;               /* 縦線との隙間 */
+}
+
+/* ベースとなる薄い縦線 */
+.kv-scroll::after {
+  content: "";
+  width: 1px;                           /* 繊細で細いライン */
+  height: 50px;                         /* 線の長さ */
+  background: rgba(255, 255, 255, 0.25); /* 薄い白の背景線 */
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+/* 縦線の中を走るアニメーションの光 */
+.kv-scroll::before {
+  content: "";
+  position: absolute;
+  top: 26px;                            /* 文字（span）の下からスタートさせる調整 */
+  left: 50%;
+  width: 1px;
+  height: 50px;
+  background: #ffffff;                  /* くっきり輝く白い光の線 */
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  z-index: 2;
+  animation: scrollLineMove 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* 線が上から下へスーッと伸びて消える無限ループアニメーション */
+@keyframes scrollLineMove {
+  0% {
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top;
+  }
+  35% {
+    transform: translateX(-50%) scaleY(1);
+    transform-origin: top;
+  }
+  35.1% {
+    transform: translateX(-50%) scaleY(1);
+    transform-origin: bottom;           /* 消える時は下側を軸にする */
+  }
+  70%, 100% {
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+/* ==========================================================================
+   個別ページ共通タイトルエリア：極太＆巨大な「雑誌風タイポグラフィ」デザイン
+   ========================================================================== */
+
+/* 全体を囲うベース */
+.rental-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* 左寄せ */
+  text-align: left;         /* 左寄せ */
+  max-width: 1000px;        /* 綺麗に収まる最大幅 */
+  margin: 0;
+  padding: 140px 40px 60px; /* 上部に少しゆとりを持たせて文字の被りを綺麗に */
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+/* 1. 【主役】背景に溶け込む巨大・極太の英文字（雑誌風） */
+.rental-en {
+  font-family: 'Poppins', sans-serif;
+  /* スマホは55px、PCは最大120px〜150px近くまで超巨大化 */
+  font-size: clamp(55px, 14vw, 130px); 
+  font-weight: 900;                    /* 限界までモーッと太く！ */
+  color: #ffffff;                      /* ベースは白 */
+  opacity: 0.12;                       /* 12%の薄さにして背景に馴染ませる（絶妙な透け感） */
+  line-height: 0.8;                    /* 高さをギュッと詰めて文字自体の存在感をアップ */
+  letter-spacing: 0.02em;              /* 詰まり気味にして海外雑誌ライクに */
+  position: absolute;                  /* 位置を絶対配置にして、日本語の後ろに回す */
+  top: 40px;                           /* 背景として美しく見える位置に固定 */
+  left: 30px;
+  z-index: -1;                         /* 日本語タイトルの「後ろ」に配置 */
+  pointer-events: none;                /* クリックの邪魔をしない */
+  user-select: none;                   /* 文字選択されないようにしてデザインに徹する */
+}
+
+/* 2. 英文字の手前にくっきりと浮かび上がる日本語タイトル */
+.rental-title h2 {
+  font-size: clamp(18px, 2.5vw, 22px);  /* 読みやすく少しだけ存在感を調整 */
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* 背景の英語と被っても読めるように隠し味の影 */
+}
+
+/* 日本語タイトルの下の「細い棒線」 */
+.rental-title h2::after {
+content: "";
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  width: 0;
+  height: 2px;
+  background: #ffd3e1; /* スタジオの可愛いピンクをアクセントに */
+  opacity: 0;
+  animation: lineGrowLeft 1s ease forwards;
+  animation-delay: 0.8s;
+  max-width: 100%;
+}
+
+/* 棒線が左から右へ伸びるアニメーション */
+@keyframes lineGrowLeft {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    /* 「レッスンスケジュール」の文字幅とほぼ同じ長さ（約260px）に設定 */
+    width: 260px; 
+    opacity: 1;
+  }
+}
+
+/* 3. リード文（左寄せ） */
+.rental-lead {
+  line-height: 1.8;
+  font-size: clamp(13px, 1.8vw, 15px);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin-top: 10px;
+  text-align: left;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+/* 4. スクロールアニメーション（ここだけは可愛く中央寄せ！） */
+.kv-scroll {
+  position: relative;
+  align-self: center;        /* 親が左寄せでも、これだけ中央に持ってくる魔法 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;          /* バランスをとるために隙間を少し広めに */
+  text-align: center;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.6s; 
+}
+
+/* SCROLLのテキスト部分 */
+.kv-scroll span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.3em;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* ベースとなる薄い縦線 */
+.kv-scroll::after {
+  content: "";
+  width: 1px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+/* 縦線の中を走るアニメーションの光 */
+.kv-scroll::before {
+  content: "";
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  width: 1px;
+  height: 50px;
+  background: #ffffff;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  z-index: 2;
+  animation: scrollLineMove 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes scrollLineMove {
+  0% { transform: translateX(-50%) scaleY(0); transform-origin: top; }
+  35% { transform: translateX(-50%) scaleY(1); transform-origin: top; }
+  35.1% { transform: translateX(-50%) scaleY(1); transform-origin: bottom; }
+  70%, 100% { transform: translateX(-50%) scaleY(0); transform-origin: bottom; }
+}
+
+/* スマホ用の微調整 */
+@media screen and (max-width: 768px) {
+  .rental-title {
+    padding: 100px 20px 40px;
+    margin-bottom: 0px;
+  }
+  .rental-en {
+    top: 25px;
+    left: 15px;
+  }
+  .kv-scroll {
+    margin-top: 40px;
+  }
+}
+
+/* ==========================================================================
+   フッター手前フルワイドバナー：白丸枠×白矢印のミニマルデザイン（フェードイン）
+   ========================================================================== */
+
+/* 既存のバナーアイテムに位置の基準を保証 */
+.fullwidth-item {
+  position: relative; 
+  overflow: hidden;
+}
+
+/* ① ボタン本体：白丸の「枠線（ボーダー）」デザインに変更 */
+.banner-arrow-btn {
+  position: absolute;
+  right: 40px;         /* 右端からの距離 */
+  top: 50%;
+  transform: translateY(-50%); /* 上下中央配置 */
+  width: 46px;         /* ボタンのサイズ */
+  height: 46px;        
+  background-color: transparent; /* 【こだわり】中身は透明にして背景を活かす */
+  border: 2px solid #ffffff;    /* 【ご要望】白丸の「枠線」にする */
+  border-radius: 50%;  
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* 枠線がくっきり見えるように少し影を強化 */
+  z-index: 3;          
+  pointer-events: none; 
+  
+  /* 最初は非表示 ➔ ふわっとフェードインして登場 */
+  opacity: 0;
+  animation: arrowFadeIn 1s ease forwards;
+  animation-delay: 0.5s; 
+  
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1); /* なめらかな動きに */
+}
+
+/* ② 白丸の中の「白矢印（＞）」をCSSで描画 */
+.banner-arrow-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 42%; /* ＞ を真ん中に見せるための絶妙な微調整 */
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #ffffff;  /* 【ご要望】白い矢印 */
+  border-right: 2px solid #ffffff; /* 【ご要望】白い矢印 */
+  transform: translate(-50%, -50%) rotate(45deg); /* 傾けて「＞」にする */
+  transition: all 0.35s ease;
+}
+
+/* ③ 【ときめく仕掛け】マウスをバナーに乗せた時（ホバー時）の可愛い変化 */
+.fullwidth-item:hover .banner-arrow-btn {
+  background-color: #ffffff; /* ホバーすると、中身がパッと白い丸に塗りつぶされる */
+  right: 32px;               /* 右側にスッと動いてクリッカブルをアピール */
+  box-shadow: 0 6px 20px rgba(255, 77, 135, 0.4); /* 影がふんわりピンクの光に変わる */
+}
+
+/* ホバーした時に、中の矢印の色をスタジオピンクに可愛く変身させる */
+.fullwidth-item:hover .banner-arrow-btn::after {
+  border-top-color: #ff4d87;
+  border-right-color: #ff4d87;
+}
+
+/* ④ ボタンがふわっと浮き出てくるフェードインアニメーション */
+@keyframes arrowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* 📱 スマホ用の微調整（画面が狭いときはボタンを少し小さくスマートに） */
+@media screen and (max-width: 768px) {
+  .banner-arrow-btn {
+    right: 20px;       
+    width: 38px;
+    height: 38px;
+    border-width: 1.5px; /* スマホでは線が太く見えがちなので少し繊細に */
+  }
+  .banner-arrow-btn::after {
+    width: 7px;
+    height: 7px;
+    border-width: 1.5px;
+  }
+  .fullwidth-item:hover .banner-arrow-btn {
+    right: 15px;       
+  }
+}
+
+/* ――― 【中央固定】テキスト・ロゴエリアの設定（位置を少し上に修正） ――― */
+.kv-fixed-content {
+  position: absolute;
+  /* ↓ 50% から 38% に変更して、文字を少し上部に引っ越しさせます */
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  z-index: 3;                       
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+  pointer-events: none;             
+  
+  opacity: 0;
+  animation: kvTextFadeInUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.5s;
+}
+
+/* 文字がよりハッキリ見えるように影（text-shadow）を少しだけ強化して調整 */
+.fixed-kv-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(38px, 6.5vw, 68px); 
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 2px 5px rgba(0, 0, 0, 0.3); /* 2重の影で視認性UP */
+}
+
+.fixed-kv-sub {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-size: clamp(13px, 1.8vw, 16px);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.15em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ==========================================================================
+   ★【新設】トップページ専用：下半分のスクロール誘導アニメーション
+   ========================================================================== */
+.kv-home-scroll {
+  position: absolute;
+  bottom: 40px;        /* 画面の一番下から少し浮かせた絶妙な位置 */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 3;          /* オーバーレイより手前 */
+  pointer-events: none;
+
+  /* 文字たちと連動してふわっと出てくる演出 */
+  opacity: 0;
+  animation: kvTextFadeInUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.8s; /* 文字より少しだけ遅れて出るのがお洒落！ */
+}
+
+/* SCROLLのテキスト部分 */
+.kv-home-scroll span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.3em;
+  display: block;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ベースとなる薄い縦線 */
+.kv-home-scroll::after {
+  content: "";
+  width: 1px;
+  height: 60px; /* 少し長め（60px）にして、ファーストビューのダイナミックさに合わせました */
+  background: rgba(255, 255, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+/* 縦線の中を走るアニメーションの光 */
+.kv-home-scroll::before {
+  content: "";
+  position: absolute;
+  top: 26px; /* SCROLLの文字の下からスタート */
+  left: 50%;
+  width: 1px;
+  height: 60px;
+  background: #ffffff;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  z-index: 4;
+  animation: scrollLineMoveHome 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* トップ画面用に線の長さを60pxに合わせた光の軌道アニメーション */
+@keyframes scrollLineMoveHome {
+  0% { transform: translateX(-50%) scaleY(0); transform-origin: top; }
+  35% { transform: translateX(-50%) scaleY(1); transform-origin: top; }
+  35.1% { transform: translateX(-50%) scaleY(1); transform-origin: bottom; }
+  70%, 100% { transform: translateX(-50%) scaleY(0); transform-origin: bottom; }
+}
+
+/* スマホ等で文字の位置が上がりすぎないように微調整（レスポンシブ） */
+@media screen and (max-width: 768px) {
+  .kv-fixed-content {
+    top: 42%; /* スマホ画面は縦が短いので、42%くらいが綺麗に中央上に収まります */
+  }
+  .kv-home-scroll {
+    bottom: 30px;
+  }
+}
+
+/* ==========================================================================
+   ★【新設・シンプル横書き版】トップページ専用：下半分のスクロール誘導
+   ========================================================================== */
+.kv-home-scroll {
+  position: absolute;
+  bottom: 40px;        /* 画面の一番下から少し浮かせた絶妙な位置 */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;          /* オーバーレイより手前 */
+  pointer-events: none;
+
+  /* 文字たちがふわっと出てくる上品な演出（文字と完全に連動） */
+  opacity: 0;
+  animation: kvScrollFadeIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.8s; /* キャッチコピーよりほんの少しだけ遅れて登場 */
+}
+
+/* SCROLLのテキスト部分（王道で親しみやすい横書き仕様） */
+.kv-home-scroll span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;                   /* 小さめで繊細な印象に */
+  font-weight: 400;                  /* 太さを抜いてシンプルに */
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.3em;             /* 文字の間隔を広げてお洒落に */
+  display: block;
+  margin-bottom: 15px;               /* 横書き文字と下の線との絶妙なすき間 */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 【シンプル極細ライン】上から下へすーっと流れるように消える線 */
+.kv-home-scroll::after {
+  content: "";
+  width: 1px;                        /* 限界まで細い1pxの繊細な線 */
+  height: 60px;                      /* 横書き文字のバランスに合わせた綺麗な長さ */
+  background: rgba(255, 255, 255, 0.15); /* 最初から見える薄いベースの線 */
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+/* 縦線の中を走るアニメーションの光 */
+.kv-home-scroll::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  height: 60px;
+  background: #ffffff;               /* すーっと流れる白い光の線 */
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;             /* 上から伸びる */
+  z-index: 4;
+  animation: minimalLineMove 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* 1本線が上から下へ滑らかに落ちていくミニマルアニメーション */
+@keyframes minimalLineMove {
+  0% {
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: translateX(-50%) scaleY(1);
+    transform-origin: top;
+  }
+  45.1% {
+    transform: translateX(-50%) scaleY(1);
+    transform-origin: bottom;        /* 下側を軸にして消えていく準備 */
+  }
+  90%, 100% {
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: bottom;        /* 下に吸い込まれるように消える */
+  }
+}
+
+/* 最初に出てくるときのアニメーション */
+@keyframes kvScrollFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 15px); /* 少し下からスッと登場 */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+
+/* ==========================================================================
+   【新規】シネマティック・ズームスライダー ファーストビュー
+   ========================================================================== */
+
+/* 全体のコンテナ（画面いっぱいに広げる） */
+.new-kv {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px); /* ヘッダーの高さ80pxを引いた画面ぴったりサイズ */
+  min-height: 550px;           /* スマホ等での潰れ防止 */
+  overflow: hidden;
+  background-color: #000;      /* 切り替えの合間に裏が白く見えないように黒ベース */
+}
+
+@media (max-width: 768px) {
+  .new-kv {
+    height: calc(100vh - 60px); /* SP版はヘッダー高さ60pxに合わせる */
+  }
+}
+
+/* 上から文字の裏側にかけて、ほんのり滑らかな黒いグラデーションを敷いて文字を見えやすく */
+.kv-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.15) 40%, rgba(0, 0, 0, 0) 100%);
+  z-index: 2;
+}
+
+/* ――― スライダー画像の設定 ――― */
+.kv-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.kv-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  /* background-positionを「center 60%」にすることで、写真をほんの少しだけ上に引き上げ、中央メインの被写体を画面の下半分に集めます */
+  background-position: center 60%;
+  opacity: 0; 
+  transform: scale(1);
+  
+  /* フェードイン・アウトとズームのアニメーションを同時にかける */
+  animation: 
+    kvFadeSlideshow 24s infinite linear,
+    kvZoomSlideshow 6s infinite linear;
+}
+
+/* 各画像の表示タイミングをずらす（4枚構成・1枚6秒の計24秒ループ） */
+.kv-slide:nth-child(1) { animation-delay: 0s, 0s; }
+.kv-slide:nth-child(2) { animation-delay: 6s, 6s; }
+.kv-slide:nth-child(3) { animation-delay: 12s, 12s; }
+.kv-slide:nth-child(4) { animation-delay: 18s, 18s; }
+
+
+/* ――― 【位置変更】テキスト・ロゴエリアの設定（左寄せアレンジ版） ――― */
+.kv-fixed-content {
+  position: absolute;
+  top: 52%;                           
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  z-index: 3;                       
+  /* ↓ 全体の文字の揃え方向を「左揃え」に変更 */
+  text-align: left;                 
+  width: 90%;
+  /* 雑誌風の左寄せは、最大幅を少しタイト（600px等）にしてあげると、綺麗に文字が折り返されてお洒落に見えます */
+  max-width: 600px;                 
+  pointer-events: none;             
+  
+  /* ページを開いた時の上品なフェードイン演出 */
+  opacity: 0;
+  animation: kvTextFadeInUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.5s;
+}
+
+/* スタジオ名タイトル（雑誌風・改行OK・左揃え仕様） */
+/* スタジオ名タイトル（雑誌風・左揃え・★極上お洒落な中抜き仕様） */
+.fixed-kv-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(38px, 8.5vw, 92px);
+  font-weight: 900;                  /* 中抜きにするので、輪郭がはっきりするよう最大級の太さに */
+  
+  /* ――― ★ここが中抜き（アウトライン）の魔法 ――― */
+  color: transparent;                /* ① 文字の中身を完全に「透明」にする */
+  -webkit-text-stroke: 1.5px #ffffff; /* ② フチに1.5pxの綺麗な白い線を付ける（Safari/Chrome対応） */
+  text-stroke: 1.5px #ffffff;         /* 標準のフチ線設定 */
+  /* ―――――――――――――――――――――――――――――― */
+
+  letter-spacing: 0.25em;            /* 文字の間隔を広ーーく空けてハイブランド風に */
+  line-height: 1.15;                 /* 改行されたときに文字同士が重ならない絶妙な行間 */
+  margin-bottom: 20px;
+  white-space: normal;               /* 改行を許可 */
+  
+  /* 中抜き文字が背景の白い部分に重なっても見失わないよう、
+     極薄の黒い影を文字の “後ろ全体” にふわっと敷いて可読性を死守します */
+  text-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* サブキャッチコピー（日本語も左揃えに連動） */
+.fixed-kv-sub {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-size: clamp(12px, 1.6vw, 14px); 
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);   
+  letter-spacing: 0.3em;               
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ==========================================================================
+   アニメーションの魔法（Keyframes）
+   ========================================================================== */
+
+/* 1. 4枚の画像が綺麗に重なりながらフェードイン・アウトする計算（24秒全体） */
+@keyframes kvFadeSlideshow {
+  0% { opacity: 0; }
+  4% { opacity: 1; }      
+  25% { opacity: 1; }     
+  29% { opacity: 0; }     
+  100% { opacity: 0; }
+}
+
+/* 2. それぞれの画像が「表示されている6秒間」だけ、ゆっくりズームインする */
+@keyframes kvZoomSlideshow {
+  0% {
+    transform: scale(1.02); 
+  }
+  100% {
+    transform: scale(1.12); 
+  }
+}
+
+/* 3. 中央の固定文字が下から美しくフェードインする */
+@keyframes kvTextFadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -35%); 
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%); 
+  }
+}
+
+/* スマホ等で位置のバランスを整える微調整（レスポンシブ） */
+@media screen and (max-width: 768px) {
+  .kv-fixed-content {
+    /* スマホは画面の縦がさらにギュッと狭くなるので、35%くらいにしておくと丁度頭の上に文字が抜けます */
+    top: 24%;                         
+  }
+  .kv-home-scroll {
+    bottom: 30px;                      /* 下の余白を少し詰める */
+  }
+}
+
+/* ==========================================================================
+   ABOUT ALI うっすら背景文字の調整（SP版もデカ文字維持）
+   ========================================================================== */
+
+.about-ali-bg {
+  /* 最小サイズを【70px】まで引き上げ、PCと同じ【100px】を目指す設定 */
+  font-size: clamp(70px, 9vw, 100px) !important; 
+  white-space: nowrap; /* 右側にはみ出させつつ、絶対に改行させない */
+  top: 15px;
+  left: 15px;
+  color: rgba(170, 130, 145, 0.12) !important; 
+}
+
+
+
+/* 画面幅が小さいスマホ（480px以下）のときの調整 */
+@media screen and (max-width: 480px) {
+  .about-ali-bg {
+    /* スマホでも縮小させず、ドカンと75px〜85px付近をキープ */
+    font-size: 100px !important; 
+    top: 30px;                  /* 文字が大きくなった分、少し上に上げてバランス調整 */
+    left: 10px;                
+  }
+}
+
+/* 2. NEWS の文字（元々ある #news::before を上書き） */
+#news::before {
+  /* 色を 0.05 から 0.12 に変更（ほんの少し濃く） */
+  color: rgba(170, 130, 145, 0.12) !important;
+}
+
+/* ==========================================================================
+   ジャンル選択タブのスタイル（ボタンごとに色分け版）
+   ========================================================================== */
+.tab-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 40px auto 20px;
+  padding: 0 20px;
+  max-width: 600px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: inherit;
+  letter-spacing: 1px;
+  border: 2px solid #e0e0e0;
+  background-color: #fff;
+  color: #888;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* マウスを乗せたとき共通 */
+.tab-btn:hover {
+  background-color: #fafafa;
+  border-color: #bbb;
+}
+
+/* --------------------------------------------------
+   選択されているタブ（アクティブ）の個別カラー設定
+   -------------------------------------------------- */
+
+/* ①「すべてを見る」が押されたとき（上品なチャコール/ゴールド系） */
+.tab-btn[data-genre="all"].active {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(108, 117, 125, 0.3);
+}
+
+/* ②「ジャズ」が押されたとき（ジャズカードのピンク系にマッチ） */
+.tab-btn[data-genre="ジャズ"].active {
+  background-color: #ff8ca3; 
+  border-color: #ff8ca3;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(255, 140, 163, 0.3);
+}
+
+/* ③「バレエ」が押されたとき（バレエカードの水色系にマッチ） */
+.tab-btn[data-genre="バレエ"].active {
+  background-color: #4ea8de; 
+  border-color: #4ea8de;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(78, 168, 222, 0.3);
+}
+
+/* スマホ用の微調整 */
+@media screen and (max-width: 480px) {
+  .tab-container {
+    gap: 8px;
+    margin: 25px auto 15px;
+  }
+  .tab-btn {
+    padding: 10px 10px;
+    font-size: 13px;
+  }
+
+  /* スマホ版でカードの中身を上から【文字 → 写真】の順番に強制する設定 */
+  .class-detail-card-pink,
+  .class-detail-card-blue {
+    display: flex;
+    flex-direction: column !important; /* 縦並びにする */
+  }
+
+  /* 文字グループを一番上（1番目）に配置 */
+  .detail-content {
+    order: 1;
+    width: 100% !important;
+  }
+
+  /* 写真スライダーをその下（2番目）に配置 */
+  .detail-slider {
+    order: 2;
+    width: 100% !important;
+    margin-top: 15px; /* 文字と写真の間のすき間（お好みで調整してください） */
   }
 }
