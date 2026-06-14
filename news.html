@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/slick.css">
 <link rel="stylesheet" href="css/slick-theme.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
 
 </header>
 
-<div class="rental-title classpage-background-img">
+<div class="rental-title newspage-background-img">
 
       <p class="rental-en">
         NEWS
@@ -58,65 +58,106 @@
 
       <p class="rental-lead">
         生徒の皆さんへの連絡事項や、<br>
-        お得な入会情報を投稿しています。
-    </div>
-	
+        お得な入会情報を投稿しています。</p>
 
-	
-<section class="content-section block block-a section-news" id="news">
-	
-  <div class="news-list">
-
-    <div class="news-item">
-      <div class="news-date">2024.02.01</div>
-      <div class="news-text">春の発表会のお知らせを公開しました。</div>
-    </div>
-
-    <div class="news-item">
-      <div class="news-date">2024.01.20</div>
-      <div class="news-text">ジャズクラスの新規生徒募集を開始しました。</div>
-    </div>
-
-    <div class="news-item">
-      <div class="news-date">2024.01.10</div>
-      <div class="news-text">冬休み特別レッスンのレポートを更新しました。</div>
-    </div>
-
-    <div class="news-item">
-      <div class="news-date">2024.01.01</div>
-      <div class="news-text">新年のご挨拶を掲載しました。</div>
-    </div>
-
+          <div class="kv-scroll">
+    <span>SCROLL</span>
   </div>
+    </div>
 	
-<div class="btn-wrap">
-  <a href="index.html" class="back-top-btn">TOPページにもどる</a>
-</div>
 
+	
+<section class="news-section">
+  <h2 class="news-title">NEWS</h2>
+
+  <!-- ① タブ切り替えボタン -->
+  <div class="news-tabs">
+    <button class="tab-btn active" data-tab="all">すべてのNEWS</button>
+    <button class="tab-btn" data-tab="inazawa">稲沢</button>
+    <button class="tab-btn" data-tab="nisshin">日進</button>
+    <button class="tab-btn" data-tab="join">入会検討中の方へ</button>
+    <button class="tab-btn" data-tab="ballet">バレエ</button>
+    <button class="tab-btn" data-tab="jazz">ジャズ</button>
+  </div>
+
+  <!-- ② ニュースのリスト本体 -->
+  <ul class="news-list">
+    <!-- data-category に、どのタブで表示させたいかのキーワードを入れます -->
+    <li class="news-item" data-category="inazawa">
+      <a href="news_260404.html"><div class="news-date">2026.06.15</div>
+      <div class="news-text">【稲沢】7月・8月・9月のスタジオ場所案内</div></a>
+    </li>
+    <li class="news-item" data-category="ali">
+      <div class="news-date">2026.06.15</div>
+      <div class="news-text">2026年度 ALI研究発表会の開催が決定しました！</div>
+    </li>
+    <li class="news-item" data-category="join">
+      <div class="news-date">2026.06.15</div>
+      <div class="news-text">入会金無料キャンペーン実施中！</div>
+    </li>
+    <li class="news-item" data-category="ballet">
+      <div class="news-date">2026.06.15</div>
+      <div class="news-text">【バレエクラス】休講のお知らせ</div>
+    </li>
+    <li class="news-item" data-category="jazz">
+      <div class="news-date">2026.06.15</div>
+      <div class="news-text">【ジャズクラス】衣装の採寸について</div>
+    </li>
+  </ul>
 </section>
 
 <footer class="footer">
 
   <div class="footer-info">
-    <p class="footer-tel">TEL：000-0000-0000</p>
-    <p class="footer-address">〒000-0000 愛知県名古屋市〇〇区〇〇0-0-0</p>
+    <p class="footer-tel">TEL：090ｰ3578-6141</p>
+    <p class="footer-address">〒470-0134 愛知県日進市香久山2-1607 2A</p>
 
     <div class="footer-sns">
-      <a href="#" class="sns-icon">Instagram</a>
-      <a href="#" class="sns-icon">TikTok</a>
-      <a href="#" class="sns-icon">YouTube</a>
+        <a href="#">
+    <img src="img/insta.png" alt="Instagram" class="sns-img">
+  </a>
+      <!-- <a href="#" class="sns-icon">TikTok</a>
+      <a href="#" class="sns-icon">YouTube</a> -->
     </div>
   </div>
 
   <p class="footer-links">
-    <a href="https://www.makeenlit.com/">運営会社</a>
-    <span class="divider">｜</span>
     <a href="policy.html">プライバシーポリシー</a>
   </p>
 
   <p>&copy; 2026 ALI dance space All rights reserved.</p>
 
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tabs = document.querySelectorAll('.tab-btn');
+  const newsItems = document.querySelectorAll('.news-item');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      // 全てのボタンからactiveクラスを消し、クリックされたボタンにだけつける
+      tabs.forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+
+      // クリックされたボタンのカテゴリ名を取得
+      const targetCategory = this.getAttribute('data-tab');
+
+      // ニュース一覧の表示・非表示を切り替える
+      newsItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+
+        // 「皆さんへ（all）」が選ばれたか、ニュースのカテゴリが一致した場合は表示
+        if (targetCategory === 'all' || targetCategory === itemCategory) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
 	
 </body>
 

@@ -1260,6 +1260,10 @@ body.loaded .follow-btn {
   background-image: url(../img/top_05.jpg);
 }
 
+.newspage-background-img{
+  background-image: url(../img/top_06.jpg);
+}
+
 /* 暗めオーバーレイ */
 .rental-title::before{
   content: "";
@@ -5956,3 +5960,74 @@ content: "";
     margin-top: 15px; /* 文字と写真の間のすき間（お好みで調整してください） */
   }
 }
+
+/* ===== タブ切り替え用の追加CSS ===== */
+
+/* タブボタンを並べるコンテナ */
+.news-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  padding: 0 10px;
+}
+
+/* タブボタン単体のデザイン（通常のピンクベース） */
+.tab-btn {
+  background-color: #ffffff;
+  color: #862125;
+  border: 1px solid #f4b9cf;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(134, 33, 37, 0.05);
+}
+
+/* マウスが乗ったとき */
+.tab-btn:hover {
+  background-color: #fff0f5;
+  transform: translateY(-1px);
+}
+
+/* 選択されている（アクティブな）タブのデザイン */
+.tab-btn.active {
+  background-color: #f4b9cf !important;
+  color: #ffffff !important;
+  border-color: #f4b9cf;
+  box-shadow: 0 4px 10px rgba(244, 185, 207, 0.4);
+}
+
+/* 切り替えアニメーション用の設定 */
+.news-item {
+  display: block; /* 初期状態 */
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* タブ切り替え時のふんわり表示用アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* スマホ版のボタン調整 */
+@media (max-width: 768px) {
+  .news-tabs {
+    gap: 8px;
+  }
+  .tab-btn {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+}
+

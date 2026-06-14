@@ -144,11 +144,6 @@
     </div>
 
   </div>
-    <!-- <div class="btn-wrap">
-  <a href="index.html" class="cta-btn">
-    TOPページにもどる ＞
-  </a>
-</div> -->
 
 </section>
 
@@ -162,8 +157,6 @@
         <a href="#">
     <img src="img/insta.png" alt="Instagram" class="sns-img">
   </a>
-      <!-- <a href="#" class="sns-icon">TikTok</a>
-      <a href="#" class="sns-icon">YouTube</a> -->
     </div>
   </div>
 
@@ -174,10 +167,26 @@
   <p>&copy; 2026 ALI dance space All rights reserved.</p>
 
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var hamburger = document.getElementById('hamburger');
+    var navList = document.querySelector('.nav-list');
+
+    if (hamburger && navList) {
+      hamburger.addEventListener('click', function() {
+        navList.classList.toggle('active');
+      });
+
+      var navLinks = document.querySelectorAll('.nav-list a');
+      navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          navList.classList.remove('active');
+        });
+      });
+    }
+  });
+</script>
 	
 </body>
-
-
-
 </html>
-
