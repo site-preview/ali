@@ -1241,7 +1241,23 @@ body.loaded .follow-btn {
 }
 
 .classpage-background-img{
-  background-image: url(../img/membership.png);
+  background-image: url(../img/top_01.jpg);
+}
+
+.lessonpage-background-img{
+  background-image: url(../img/top_02.jpg);
+}
+
+.membershippage-background-img{
+  background-image: url(../img/top_04.jpg);
+}
+
+.gallerypage-background-img{
+  background-image: url(../img/top_03.jpg);
+}
+
+.accesspage-background-img{
+  background-image: url(../img/top_05.jpg);
 }
 
 /* 暗めオーバーレイ */
