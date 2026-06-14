@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/slick.css">
+<link rel="stylesheet" href="css/slick-theme.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/slick.min.js"></script>
+<title>初めての方へ（体験・見学案内）｜ALI dance space｜日進市・稲沢市のJAZZ・バレエダンススタジオ</title>
+<link rel="icon" href="logo.ico">
+
+<style>
+/* --- FAQアコーディオン用のスタイル --- */
+.faq-item {
+  background: #fff;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #fff5f7;
+  box-shadow: 0 8px 25px rgba(134, 33, 37, 0.03);
+  overflow: hidden;
+}
+.faq-question {
+  padding: 20px 25px;
+  font-weight: bold;
+  color: #862125;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+  transition: background 0.3s ease;
+  text-align: left;
+}
+.faq-question:hover {
+  background-color: #fff9fa;
+}
+/* 矢印アイコン */
+.faq-question::after {
+  content: '';
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  width: 10px;
+  height: 6px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23862125' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/contain;
+  transition: transform 0.3s ease;
+}
+/* 開いた時の矢印の向き */
+.faq-item.active .faq-question::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+.faq-answer {
+  display: none; /* 初期状態は非表示 */
+  padding: 0 25px 25px 52px;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: left;
+  border-top: 1px solid #fff9fa;
+  padding-top: 15px;
+}
+.faq-q-badge {
+  background: #f4b9cf;
+  color: #fff;
+  font-size: 13px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.faq-a-badge {
+  background: #862125;
+  color: #fff;
+  font-size: 13px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+</style>
+</head>
+
+<body>
+	
+<header>
+  <a href="index.html"><img src="img/logo.png" alt="サイトロゴ" class="logo"></a>
+	
+<nav class="header-nav">
+  <!-- ハンバーガーアイコン（SPのみ表示） -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- ナビ本体 -->
+  <ul class="nav-list">
+    <li><a href="membership.html">入会案内</a></li>
+    <li><a href="lesson.html">レッスンスケジュール</a></li>
+    <li><a href="class.html">教室案内</a></li>
+    <li><a href="news.html">連絡ページ</a></li>
+    <li><a href="gallery.html">フォトギャラリー</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="studio.html">レンタルスタジオ</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+  </ul>
+</nav>
+</header>
+	
+<!-- キービジュアル -->
+
+      <div class="rental-title studiopage-background-img">
+
+      <p class="rental-en">
+        WELCOME
+      </p>
+
+      <h2>
+        初めての方へ
+      </h2>
+
+      <p class="rental-lead">
+        ダンスが初めてでも大丈夫！まずは体験・見学からはじめてみませんか？</p>
+
+  <div class="kv-scroll">
+    <span>SCROLL</span>
+  </div>
+    </div>
+
+<!-- メインコンテンツ -->
+<section class="content-section block block-a price-section" style="max-width: 1000px; margin: 0 auto; padding: 60px 20px; font-family: 'Poppins', sans-serif;">
+
+  <!-- ==================== 体験の流れセクション ==================== -->
+  <div style="text-align: center; margin-bottom: 40px;">
+    <span style="font-size: 13px; color: #f4b9cf; font-weight: bold; letter-spacing: 2px; text-transform: uppercase;">Flow</span>
+    <h3 style="font-size: 26px; color: #862125; font-weight: bold; margin-top: 5px; position: relative; display: inline-block; padding-bottom: 10px;">
+      体験・見学の流れ
+      <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 3px; background: #f4b9cf; border-radius: 2px;"></span>
+    </h3>
+  </div>
+
+  <!-- ステップカードの縦並びリスト -->
+  <div class="flow-container" style="display: flex; flex-direction: column; gap: 30px; margin-bottom: 80px;">
+    
+    <!-- STEP 01 -->
+    <div class="price-card" style="background: #fff; border-radius: 20px; padding: 30px; border: 1px solid #fff5f7; box-shadow: 0 10px 30px rgba(134, 33, 37, 0.04); display: flex; align-items: center; gap: 25px; flex-wrap: wrap;">
+      <div style="font-size: 36px; font-weight: bold; color: #f4b9cf; font-family: 'Poppins', sans-serif; line-height: 1; min-width: 60px;">01</div>
+      <div style="flex: 1; min-width: 200px;">
+        <h4 style="font-size: 18px; color: #862125; font-weight: bold; margin-bottom: 8px;">お電話またはフォームからご予約</h4>
+        <p style="font-size: 14px; color: #555; line-height: 1.6;">まずは「体験（または見学）をしたい」とお気軽にご連絡ください！ご希望のクラスや日時をお伺いし、スムーズにご案内いたします。</p>
+      </div>
+    </div>
+
+    <!-- STEP 02 -->
+    <div class="price-card" style="background: #fff; border-radius: 20px; padding: 30px; border: 1px solid #fff5f7; box-shadow: 0 10px 30px rgba(134, 33, 37, 0.04); display: flex; align-items: center; gap: 25px; flex-wrap: wrap;">
+      <div style="font-size: 36px; font-weight: bold; color: #f4b9cf; font-family: 'Poppins', sans-serif; line-height: 1; min-width: 60px;">02</div>
+      <div style="flex: 1; min-width: 200px;">
+        <h4 style="font-size: 18px; color: #862125; font-weight: bold; margin-bottom: 12px;">体験レッスン当日</h4>
+        <p style="font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 15px;">レッスン開始の10〜15分前を目安にスタジオへお越しください！</p>
+        
+        <!-- 持ち物インフォメーション枠 -->
+        <div style="background-color: #fff9fa; border: 1px dashed #f4b9cf; border-radius: 12px; padding: 15px 20px;">
+          <p style="font-size: 13px; font-weight: bold; color: #862125; margin-bottom: 5px;">🎒 当日の持ち物</p>
+          <ul style="font-size: 13px; color: #666; list-style: none; padding-left: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 15px;">
+            <li>・動きやすい服</li>
+            <li>・室内用シューズ</li>
+            <li>・タオル</li>
+            <li>・水分補給用のお飲み物</li>
+            <li>・体験料（500円）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 03 -->
+    <div class="price-card" style="background: #fff; border-radius: 20px; padding: 30px; border: 1px solid #fff5f7; box-shadow: 0 10px 30px rgba(134, 33, 37, 0.04); display: flex; align-items: center; gap: 25px; flex-wrap: wrap;">
+      <div style="font-size: 36px; font-weight: bold; color: #f4b9cf; font-family: 'Poppins', sans-serif; line-height: 1; min-width: 60px;">03</div>
+      <div style="flex: 1; min-width: 200px;">
+        <h4 style="font-size: 18px; color: #862125; font-weight: bold; margin-bottom: 8px;">クラスのご説明</h4>
+        <p style="font-size: 14px; color: #555; line-height: 1.6;">レッスン終了後に、レッスンのシステムや料金プラン、クラスのスケジュールなどをご案内いたします。分からないことは何でも質問してください！</p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ==================== よくある質問（FAQ）セクション ==================== -->
+  <div style="text-align: center; margin-bottom: 40px;">
+    <span style="font-size: 13px; color: #f4b9cf; font-weight: bold; letter-spacing: 2px; text-transform: uppercase;">Q&A</span>
+    <h3 style="font-size: 26px; color: #862125; font-weight: bold; margin-top: 5px; position: relative; display: inline-block; padding-bottom: 10px;">
+      よくある質問
+      <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 3px; background: #f4b9cf; border-radius: 2px;"></span>
+    </h3>
+  </div>
+
+  <div class="faq-container" style="max-width: 800px; margin: 0 auto 70px;">
+    
+    <!-- 質問 1 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span class="faq-q-badge">Q</span>
+        <span>まったくの初心者ですが、レッスンについていけますか？</span>
+      </div>
+      <div class="faq-answer">
+        もちろん大丈夫です！当スタジオに通われている方の多くが未経験からのスタートです。講師が一人ひとりのレベルに合わせて、基礎からゆっくり丁寧に指導しますのでご安心ください。
+      </div>
+    </div>
+
+    <!-- 質問 2 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span class="faq-q-badge">Q</span>
+        <span>体験レッスン当日に入会を決めなくても大丈夫ですか？</span>
+      </div>
+      <div class="faq-answer">
+        まったく問題ありません！スタジオの雰囲気や実際のレッスンを体験していただき、ご自宅でゆっくりご検討ください。無理な勧誘などは一切行っておりませんので、お気軽に楽しんでいただければ幸いです。
+      </div>
+    </div>
+
+    <!-- 質問 3 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span class="faq-q-badge">Q</span>
+        <span>年齢制限や、対象年齢はありますか？</span>
+      </div>
+      <div class="faq-answer">
+        キッズクラスから大人のクラスまで、幅広い年齢層の方に合わせたクラスをご用意しております。クラスごとの詳細な対象年齢については「教室案内（クラス紹介）」のページをご覧いただくか、直接お気軽にお問い合わせください。
+      </div>
+    </div>
+
+    <!-- 質問 4 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span class="faq-q-badge">Q</span>
+        <span>見学・体験には予約が必要ですか？</span>
+      </div>
+      <div class="faq-answer">
+        スタジオのスペースや安全面を考慮し、事前予約制とさせていただいております。お電話、または当ホームページのお問い合わせフォームより、ご希望の日時をお知らせください。（ホームページからのお問い合わせの場合、こちらからの返信を持ってご予約確定となります。）
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- 下部お問い合わせ・予約誘導ボタン -->
+  <div style="text-align: center; background: #fff; border-radius: 25px; padding: 40px 20px; border: 1px solid #fff5f7; box-shadow: 0 10px 30px rgba(134, 33, 37, 0.05);">
+    <p style="color: #862125; font-weight: bold; font-size: 18px; margin-bottom: 10px; letter-spacing: 1px;">まずはお気軽に<br>スタジオの雰囲気を体感してください✨</p>
+    <p style="color: #666; font-size: 14px; margin-bottom: 30px;">見学は無料・体験レッスンは500円で<br>随時ご予約を受け付けております！</p>
+    
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <a href="tel:09035786141" style="display: inline-block; background-color: #6c757d; color: #fff; padding: 15px 35px; border-radius: 50px; font-size: 15px; font-weight: bold; letter-spacing: 1px; transition: all 0.3s ease; text-decoration: none; box-shadow: 0 4px 10px rgba(108,117,125,0.15);">📞 お電話で予約する</a>
+      <a href="contact.html" style="display: inline-block; background-color: #f4b9cf; color: #fff; padding: 15px 35px; border-radius: 50px; font-size: 15px; font-weight: bold; letter-spacing: 1px; box-shadow: 0 6px 20px rgba(244, 185, 207, 0.35); transition: all 0.3s ease; text-decoration: none;">Webから体験を申し込む ＞</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ハンバーガーメニュー ＆ FAQ開閉スクリプト -->
+<script>
+$(function() {
+  // ハンバーガーメニュー
+  $('.hamburger').on('click', function() {
+    $(this).toggleClass('active');
+    $('.nav-list').toggleClass('open');
+  });
+
+  // FAQアコーディオン開閉
+  $('.faq-question').on('click', function() {
+    $(this).parent('.faq-item').toggleClass('active');
+    $(this).next('.faq-answer').slideToggle(300);
+  });
+});
+</script>
+
+<footer class="footer">
+  <div class="footer-info">
+    <p class="footer-tel">TEL：090ｰ3578-6141</p>
+    <p class="footer-address">〒470-0134 愛知県日進市香久山2-1607 2A</p>
+
+    <div class="footer-sns">
+      <a href="#">
+        <img src="img/insta.png" alt="Instagram" class="sns-img">
+      </a>
+    </div>
+  </div>
+
+  <p class="footer-links">
+    <a href="policy.html">プライバシーポリシー</a>
+  </p>
+
+  <p>&copy; 2026 ALI dance space All rights reserved.</p>
+</footer>
+	
+</body>
+</html>
