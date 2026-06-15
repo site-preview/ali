@@ -545,7 +545,7 @@ body.loaded .follow-btn {
 .container-melty {
   display: flex;
   flex-direction: column;
-  margin: 30px;
+  margin: 30px 0 0 0;
   text-align: center;
 }
 
@@ -4166,7 +4166,6 @@ body {
   color: #444;                        /* 純粋な黒(#000)より少しだけニュアンスを落とした濃いグレーがおしゃれ */
   padding: 40px 0;                    /* 上下の余白を広げて呼吸感（抜け感）を出す */
   line-height: 2.2;                   /* 行間をさらにゆったり広げて可読性をUP */
-  letter-spacing: 0.1em;              /* 文字と文字の間を少しあけて洗練された印象に */
   text-align: center;                 /* テキストを中央寄せに固定 */
 }
 
@@ -5147,10 +5146,8 @@ body {
   font-size: 17px;
   color: #2F2428;
   line-height: 2.4;
-  letter-spacing: 0.2em;
   display: inline-block;
   text-align: left;             /* 文章は左揃えにして読みやすく */
-  border-bottom: 1px solid #E0C3CE;
   padding: 30px 10px;
 }
 
@@ -6413,3 +6410,4 @@ content: "";
     margin-top: 5px !important;
   }
 }
+
